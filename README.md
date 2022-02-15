@@ -7,7 +7,7 @@
 
 - Naming convention, es6 or later. **Use ES6 syntax,  naming may be ambiguous**
 
-- The code is broken into reasonable components. **MAYBE**
+- The code is broken into reasonable components. **Reuse some components, some components are coded in same files.**
 
 - Store data to LocalStorage is a plus. **DONE**
 
