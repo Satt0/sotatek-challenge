@@ -98,15 +98,13 @@ const useTask = () => {
         if (task.every((t) => verifyTask(t))) return updateTasks(task);
       }
       updateTasks([]);
-      return toast("khôi phục dữ liệu thành công!", {
-        type: toast.TYPE.SUCCESS,
-      });
     } catch (e) {
       toast("không thể khôi phục dữ liệu", { type: toast.TYPE.ERROR });
       return updateTasks([]);
     }
   }, []);
   useEffect(() => {
+    // update everytime tasks changed
     try {
       if (typeof tasks?.length === "number") {
         localStorage.setItem(dbKey, JSON.stringify(tasks));
