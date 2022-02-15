@@ -22,6 +22,7 @@ export default function App() {
   }
   return <p>waiting to restore data!</p>;
 }
+// custom hooks
 const useTask = () => {
   // init tasks as null to wait for local storage restoration!
   const [tasks, updateTasks] = useState(null);
@@ -92,14 +93,17 @@ const useTask = () => {
     try {
       const task = JSON.parse(localStorage.getItem(dbKey));
 
-      if (typeof task?.length === "number") return updateTasks(task);
+      if (typeof task?.length === "number") {
+        // validate task
+        if (task.every((t) => verifyTask(t))) return updateTasks(task);
+      }
       updateTasks([]);
       return toast("khôi phục dữ liệu thành công!", {
         type: toast.TYPE.SUCCESS,
       });
     } catch (e) {
       toast("không thể khôi phục dữ liệu", { type: toast.TYPE.ERROR });
-     return  updateTasks([]);
+      return updateTasks([]);
     }
   }, []);
   useEffect(() => {
@@ -115,4 +119,20 @@ const useTask = () => {
     tasks,
     { addNewTask, updateExistTask, removeTask, toggleStatusTask, deleteBulk },
   ];
+};
+// validate task on restore!
+const verifyTask = ({ title, dueDate, priority, description, id }) => {
+  try {
+    
+    if (typeof title !== "string") throw new Error();
+    if (!moment(dueDate).isValid()) throw new Error();
+    if (typeof priority !== "string") throw new Error();
+    if (typeof description !== "string") throw new Error();
+    if (typeof id !== "string") throw new Error();
+
+    return true;
+  } catch (e) {
+    console.log(false);
+    return false;
+  }
 };
