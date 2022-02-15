@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import style from "./style.module.scss";
 import { toast } from "react-toastify";
+import moment from "moment";
 const defaultState = {
   title: "",
   description: "",
-  dueDate: "",
+  dueDate: moment().format("YYYY-MM-DD"),
   priority: "n",
 };
 export default function TaskForm({
@@ -15,6 +16,7 @@ export default function TaskForm({
   onClose = false,
 }) {
   const [state, setState] = useState(preload ? preload : defaultState);
+  console.log(state);
   const handleChange = (key) => (e) => {
     const value = e.target.value;
     setState((s) => ({ ...s, [key]: value }));
