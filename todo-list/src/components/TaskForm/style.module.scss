@@ -16,15 +16,16 @@
   margin-top: 10px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  @media screen and (max-width: 370px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
   grid-gap: 25px;
   input,
   select {
     min-height: 31px;
     padding: 0 10px;
+
     border: 1px solid black;
-  }
-  textarea {
-    min-height: 125px;
   }
 }
 .groupInput {
@@ -34,12 +35,18 @@
     font-weight: 700;
     margin-bottom: 10px;
   }
+  textarea {
+    min-height: 125px;
+    resize: none;
+    padding: 5px;
+  }
 }
 .submit {
   margin-top: 30px;
   button {
     width: 100%;
     padding: 5px 0;
+    cursor: pointer;
     min-height: 32px;
     background-color: var(--default-button);
     color: white;

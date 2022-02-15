@@ -1,0 +1,59 @@
+.container {
+  border: 1px solid black;
+  margin-bottom: 15px;
+}
+.visible {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  padding: 15px 20px;
+
+}
+.groupButtons {
+  button:first-child {
+    margin-right: 15px;
+    background-color: var(--secondary-button);
+  }
+  button:last-child{
+    background-color: var(--danger-button);
+  }
+  button{
+      min-height: 27px;
+      font-size: 12px;
+      border:none;
+      border-radius: 5px;
+      color:white;
+      min-width: 93px;
+  }
+  @media screen and  (max-width:400px) {
+    display: flex;
+    flex-direction: column;
+    button{
+      margin:0;
+      width: 100%;
+      &:first-child{
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+}
+.titleContainer{
+  display: flex;
+  align-items: center;
+  input{
+    margin-right: 7px;
+    width: unset;
+    transform: scale(1.2);
+  }
+    p{
+        font-size: 16px;
+        text-transform: capitalize;
+    }
+}
+.formContainer{
+    border-top: 1px solid black;
+    padding:25px;
+    @media screen and (max-width:400px) {
+      padding:15px;
+    }
+}
