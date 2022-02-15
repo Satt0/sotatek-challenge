@@ -1,0 +1,1 @@
+# SotaTek intern challenge.
